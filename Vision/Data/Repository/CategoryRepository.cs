@@ -15,5 +15,16 @@ namespace Vision.Data.Repository
         {
             this.db = db;
         }
+
+        public void Update(Category category)
+        {
+            var objFromDb = db.Category.FirstOrDefault(s => s.Id == category.Id);
+
+            objFromDb.Name = category.Name;
+            objFromDb.DisplayOrder = category.DisplayOrder;
+
+            db.SaveChanges();
+
+        }
     }
 }
